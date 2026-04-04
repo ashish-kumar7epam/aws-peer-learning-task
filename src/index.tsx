@@ -14,9 +14,12 @@ const queryClient = new QueryClient({
   },
 });
 
-if (import.meta.env.DEV) {
-  const { worker } = await import("./mocks/browser");
-  worker.start({ onUnhandledRequest: "bypass" });
+const useMocks = import.meta.env.VITE_USE_MOCKS === "true";
+
+if (useMocks) {
+  import("./mocks/browser").then(({ worker }) => {
+    worker.start({ onUnhandledRequest: "bypass" });
+  });
 }
 
 const container = document.getElementById("app");
