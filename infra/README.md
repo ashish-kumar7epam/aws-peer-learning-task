@@ -2,6 +2,8 @@
 
 This is a blank project for CDK development with TypeScript.
 
+
+
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Useful commands
@@ -12,3 +14,11 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk deploy`  deploy this stack to your default AWS account/region
 * `npx cdk diff`    compare deployed stack with current state
 * `npx cdk synth`   emits the synthesized CloudFormation template
+
+
+Links
+s3 object url - https://deploywebappstack-deploymentfrontendbucketpeerbe50-pxzhgtc68oce.s3.us-east-1.amazonaws.com/index.html   -    //will get 403 as permission is configured only for cloudfront
+
+cloudfront url - https://d1ix2dyi92eqcp.cloudfront.net/
+
+

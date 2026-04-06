@@ -1,8 +1,10 @@
 import {aws_cloudfront, Stack,type StackProps, aws_cloudfront_origins, aws_s3, aws_s3_deployment, CfnOutput, RemovalPolicy} from 'aws-cdk-lib';
+import { aws_lambda, Duration } from 'aws-cdk-lib';
+import { aws_apigateway } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 import * as path from "path";
-const relativePath = "../../dist"
+const relativePathFrontend = "../../dist"
 
 export class DeployWebAppStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -53,7 +55,7 @@ export class DeployMentService extends Construct {
     });
 
     new aws_s3_deployment.BucketDeployment(this, "BucketDeploymentPeer", {
-      sources:[aws_s3_deployment.Source.asset(path.join(__dirname, relativePath))],
+      sources:[aws_s3_deployment.Source.asset(path.join(__dirname, relativePathFrontend))],
       destinationBucket:hostingBucket,
       distribution,
       distributionPaths:["/*"]
@@ -72,3 +74,4 @@ export class DeployMentService extends Construct {
     });
   }
 }
+
